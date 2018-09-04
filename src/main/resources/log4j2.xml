@@ -22,9 +22,9 @@
     </Appenders>
 
     <Loggers>
-        <asyncLogger level="info" additivity="true">
+        <AsyncRoot level="info" includeLocation="true" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="service_appender"/>
-        </asyncLogger>
+        </AsyncRoot>
     </Loggers>
 </Configuration>
