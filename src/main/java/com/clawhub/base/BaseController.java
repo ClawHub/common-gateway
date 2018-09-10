@@ -1,5 +1,6 @@
 package com.clawhub.base;
 
+import com.clawhub.result.ResultUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,6 @@ public class BaseController {
      */
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String welcome() {
-        System.out.println("welcome");
-        return "welcome!";
+        return ResultUtil.getSucc("1000");
     }
 }

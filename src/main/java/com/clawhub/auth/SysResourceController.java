@@ -3,7 +3,7 @@ package com.clawhub.auth;
 import com.alibaba.fastjson.JSONObject;
 import com.clawhub.auth.entity.SysResource;
 import com.clawhub.auth.service.ShiroService;
-import com.clawhub.util.json.JsonUtil;
+import com.clawhub.result.ResultUtil;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,7 +59,7 @@ public class SysResourceController {
         resourceFacade.insertResource(JSONObject.parseObject(param, SysResource.class));
         //刷新系统权限
         shiroService.updatePermission();
-        return JsonUtil.getSucc("新增权限成功");
+        return ResultUtil.getSucc();
     }
 
 
