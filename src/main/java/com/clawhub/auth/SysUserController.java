@@ -27,7 +27,7 @@ import java.util.List;
  * @CreateDate 2018/9/11 <br>
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("/user")
 public class SysUserController {
     /**
      * The User facade.
@@ -38,7 +38,7 @@ public class SysUserController {
     @Autowired
     private MyShiroRealm myShiroRealm;
 
-    @PostMapping("list")
+    @PostMapping("/list")
     public String list(@RequestBody String param) {
         JSONObject body = JSONObject.parseObject(param);
         SysUser sysUser = body.getObject("user", SysUser.class);
@@ -46,12 +46,21 @@ public class SysUserController {
         return userFacade.queryUserByPage(searchModel, sysUser);
     }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public String add(@RequestBody String param) {
         JSONObject body = JSONObject.parseObject(param);
         SysUser sysUser = body.getObject("user", SysUser.class);
         List<String> roleIds = body.getJSONArray("roleIds").toJavaList(String.class);
         userFacade.addUser(buildAddUserInfo(sysUser), roleIds);
+        return ResultUtil.getSucc();
+    }
+
+    @PostMapping("/batchDel")
+    public String batchDel(@RequestBody String param) {
+        JSONObject body = JSONObject.parseObject(param);
+        List<String> ids = body.getJSONArray("ids").toJavaList(String.class);
+        SysUser currentUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
+        userFacade.batchDelUser(ids,currentUser);
         return ResultUtil.getSucc();
     }
 
