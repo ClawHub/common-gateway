@@ -27,6 +27,12 @@ public class ConfigApp {
     public SpringContextHelper springHelper() {
         return new SpringContextHelper();
     }
+
+    /**
+     * Build config cors configuration.
+     *
+     * @return the cors configuration
+     */
     private CorsConfiguration buildConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("*"); // 1允许任何域名使用

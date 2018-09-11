@@ -5,10 +5,7 @@ import com.clawhub.auth.entity.SysResource;
 import com.clawhub.auth.service.ShiroService;
 import com.clawhub.result.ResultUtil;
 import jdk.nashorn.internal.ir.annotations.Reference;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,15 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @CreateDate 2018年02月08日<br>
  */
 @RestController
-@CrossOrigin
-@RequestMapping("resourceCtr")
-//@Api(value = "/resourceCtr", tags = "资源管理")
+@RequestMapping("resource")
 public class SysResourceController {
-    /**
-     * 日志
-     */
-    private Logger logger = LoggerFactory.getLogger(SysResourceController.class);
-
     /**
      * The Resource facade.
      */
@@ -53,8 +43,6 @@ public class SysResourceController {
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
 //    @ApiOperation(notes = "新增资源", value = "新增资源", produces = "application/json")
     public String insert(@RequestParam String param) {
-        logger.info("SysResourceController.insert");
-        logger.info(param);
         //权限插入表中
         resourceFacade.insertResource(JSONObject.parseObject(param, SysResource.class));
         //刷新系统权限
