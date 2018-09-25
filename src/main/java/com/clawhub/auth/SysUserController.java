@@ -32,7 +32,7 @@ public class SysUserController {
     /**
      * The User facade.
      */
-    @Reference
+    @Reference(timeout = 15000)
     private UserFacade userFacade;
 
     @Autowired

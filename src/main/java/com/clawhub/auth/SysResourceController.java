@@ -35,7 +35,7 @@ public class SysResourceController {
     /**
      * The Resource facade.
      */
-    @Reference
+    @Reference(timeout = 15000)
     private ResourceFacade resourceFacade;
 
     /**

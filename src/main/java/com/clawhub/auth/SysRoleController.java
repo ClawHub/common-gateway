@@ -28,7 +28,7 @@ import java.util.List;
 @RequestMapping("/role")
 public class SysRoleController {
 
-    @Reference
+    @Reference(timeout = 15000)
     private RoleFacade roleFacade;
 
     @PostMapping("/list")
